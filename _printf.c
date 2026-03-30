@@ -28,22 +28,26 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 	
-    while (format[i] != '\0') /*we go on the loop until the end*/
+	while (format[i] != '\0') /*we go on the loop until the end*/
 	{
 	if (format[i] != '%') /* if the char is diff than a % */
 	{
+			
 		_putchar(format[i]);
 		counter++;
 	} 
-    
-    
-    else  /*if there is a %, we check the char after*/
+	
+	
+	else  /*if there is a %, we check the char after*/
 	{
 		i++;
+		if (format[i] == '\0') /*if % is the last char of the string*/
+			return (-1);
+
 		j = 0;
 		while (j < 3) /* we compare it with our array of struct*/
 		{
-             /*if %[] == specifier[j]*/
+			 /*if %[] == specifier[j]*/
 			if (format[i] == array_of_struct[j].specifier)
 			{
 				counter += array_of_struct[j].f(args);
@@ -53,7 +57,7 @@ int _printf(const char *format, ...)
 		}
 	}
 	
-    i++;
+	i++;
 	}
 	va_end(args);
 	return (counter);
