@@ -1,4 +1,4 @@
-#include "main.h"
+#include "_printf.h"
 
 
 /**
@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	specifier array_of_struct[3] = { /*array of struct with specifier char*/
 		{'c', print_char}, /*for a char*/
 		{'s', print_string},/*for a string*/
-		{'%', print_percent}/*for a percrent after another one*/
+		{'%', print_percent} /*for a percrent after another one*/
 	};
 
 	if (format == NULL) /*we check if the ini string is NULL*/
@@ -27,17 +27,17 @@ int _printf(const char *format, ...)
 
 
 	va_start(args, format);
-	
+
 	while (format[i] != '\0') /*we go on the loop until the end*/
 	{
 	if (format[i] != '%') /* if the char is diff than a % */
 	{
-			
+
 		_putchar(format[i]);
 		counter++;
-	} 
-	
-	
+	}
+
+
 	else  /*if there is a %, we check the char after*/
 	{
 		i++;
@@ -56,7 +56,7 @@ int _printf(const char *format, ...)
 			j++;
 		}
 	}
-	
+
 	i++;
 	}
 	va_end(args);
