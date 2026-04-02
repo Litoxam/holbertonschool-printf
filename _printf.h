@@ -1,16 +1,23 @@
 #ifndef _PRINTF_H
 #define _PRINTF_H
 
-#include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
+
+typedef struct format_specifier
+{
+    char specifier;
+    int (*func)(va_list);
+} format_t;
 
 int _printf(const char *format, ...);
 
-void print_char(char c);
-void print_string(char *s);
-int print_int(int n);
-void print_float(  f);
+int print_char(va_list args);
+int print_string(va_list args);
+int print_int(va_list args);
+int print_percent(va_list args);
+int print_float(va_list args);
 
-char *convert_int_to_string(int )
+char *convert_int_to_string(int n);
 
 #endif
