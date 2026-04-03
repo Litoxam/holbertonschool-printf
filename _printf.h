@@ -18,6 +18,7 @@ int print_int(va_list args);
 int print_percent(va_list args);
 int print_float(va_list args);
 
-char *convert_int_to_string(int n);
+int _putchar(char c);
+
 
 #endif
