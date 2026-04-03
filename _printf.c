@@ -20,6 +20,7 @@ int _printf(const char *format, ...)
 		{'c', print_char}, /*for a char*/
 		{'s', print_string},/*for a string*/
 		{'%', print_percent}/*for a percrent after another one*/
+		
 	};
 
 	if (format == NULL) /*we check if the ini string is NULL*/
