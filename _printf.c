@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 		{'s', print_string},/*for a string*/
 		{'%', print_percent},/*for a percrent after another one*/
 		{'d', print_int},
-		{'i', print_int}
+		{'i', print_int},
 		{0, NULL}
 	};
 
