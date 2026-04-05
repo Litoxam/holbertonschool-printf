@@ -1,0 +1,57 @@
+PRINTF(3)                 Programmer's Manual                PRINTF(3)
+
+NAME
+       _printf - print formatted output to the standard output.
+
+SYNOPSIS
+       #include "main.h"
+
+       int _printf(const char *format, ...);
+
+DESCRIPTION
+       _printf writes formatted output to the standard output. It mimics
+       the basic behavior of the standard printf(3) function, but supports
+       only a limited set of format specifiers.
+
+       The format string may contain:
+         • ordinary characters, printed as-is
+         • conversion specifiers beginning with '%' that determine how
+           additional arguments are formatted
+
+SUPPORTED SPECIFIERS
+       %c      Print a single character.
+       %s      Print a null-terminated string.
+       %d, %i  Print a signed integer.
+       %%      Print a literal percent sign.
+
+PARAMETERS
+       format  A string containing ordinary characters and format
+               specifiers. If format is NULL, the behavior is undefined.
+
+       ...     Additional arguments matching the format specifiers.
+
+RETURN VALUE
+       Returns the total number of characters printed, or -1 if an error
+       occurs (NULL format, unsupported specifier, write failure).
+
+ERRORS
+       -1 is returned if:
+         • format is NULL
+         • an unsupported format specifier is encountered
+         • a write error occurs
+
+EXAMPLES
+       _printf("Hello %s\n", "world");
+           Output: Hello world
+
+       _printf("Value: %d\n", 42);
+           Output: Value: 42
+
+       _printf("Percent: %%\n");
+           Output: Percent: %
+
+SEE ALSO
+       printf(3), putchar(3), va_list(3), variadic functions.
+
+AUTHORS
+       Project developed by Lonie and Maxime Bernier for Holberton School.
