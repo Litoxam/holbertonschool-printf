@@ -6,11 +6,18 @@
 
 /*structure*/
 
+
+/**
+ * struct specifier - Struct matching a format token to a print function.
+ * @specifier: The format token
+ * @f: The function pointer to handle the printing.
+ */
+
 typedef struct specifier
 {
 	char *specifier;
 	int (*f)(va_list);
-} spec_t;
+} specifier;
 
 
 

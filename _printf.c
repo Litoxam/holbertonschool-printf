@@ -18,12 +18,12 @@ int _printf(const char *format, ...)
 	int found; /*check if we find a match after the %*/
 
 	specifier array_of_struct[] = { /*array of struct with specifier char*/
-		{'c', print_char}, /*for a char*/
-		{'s', print_string},/*for a string*/
-		{'%', print_percent},/*for a percrent after another one*/
-		{'d', print_int},
-		{'i', print_int},
-		{0, NULL}
+		{"c", print_char}, /*for a char*/
+		{"s", print_string},/*for a string*/
+		{"%", print_percent},/*for a percrent after another one*/
+		{"d", print_int},
+		{"i", print_int},
+		{NULL, NULL}
 	};
 
 	if (format == NULL) /*we check if the ini string is NULL*/
@@ -31,21 +31,21 @@ int _printf(const char *format, ...)
 
 
 	va_start(args, format);
-	
+
 	while (format[i] != '\0') /*we go on the loop until the end*/
 	{
 		if (format[i] != '%') /* if the char is diff than a % */
-		{	
+		{
 			_putchar(format[i]);
 			counter++;
-		} 
-		
+		}
+
 		else  /*if there is a %, we check the char after*/
 	{
 		i++;
 		if (format[i] == '\0') /*if % is the last char of the string*/
 		{
-			va_end(args);	
+			va_end(args);
 			return (-1);
 		}
 
@@ -54,7 +54,7 @@ int _printf(const char *format, ...)
 		while (j < 3) /* we compare it with our array of struct*/
 		{
 			 /*if %[] == specifier[j]*/
-			if (format[i] == array_of_struct[j].specifier)
+			if (format[i] == array_of_struct[j].specifier[0])
 			{
 				counter += array_of_struct[j].f(args);
 				found = 1;
@@ -62,7 +62,7 @@ int _printf(const char *format, ...)
 			}
 			j++;
 		}
-		
+
 		if (found == 0)
 		{
 			_putchar('%');
@@ -70,8 +70,8 @@ int _printf(const char *format, ...)
 			counter += 2;
 		}
 	}
-		
-	
+
+
 	i++;
 	}
 	va_end(args);
