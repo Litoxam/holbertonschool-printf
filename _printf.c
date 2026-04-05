@@ -51,7 +51,7 @@ int _printf(const char *format, ...)
 
 		j = 0;
 		found = 0;
-		while (j < 3) /* we compare it with our array of struct*/
+		while (j < 5) /* we compare it with our array of struct*/
 		{
 			 /*if %[] == specifier[j]*/
 			if (format[i] == array_of_struct[j].specifier[0])
